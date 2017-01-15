@@ -1,0 +1,40 @@
+
+.tile {
+  float: left;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+
+  &__details {
+    font-weight: 300;
+    color: $dark-grey;
+    padding: 0;
+
+      &__title {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 600;
+      }
+
+      li {
+        list-style-type: none;
+
+        span {
+          font-weight: 600;
+        }
+      }
+  }
+  a {
+    cursor: pointer;
+  }
+}
+
+.tile > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}

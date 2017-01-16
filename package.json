@@ -48,6 +48,7 @@
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4",
-    "whatwg-fetch": "^2.0.1"
+    "whatwg-fetch": "^2.0.1",
+     "react-input-range": "^0.9.3"
   }
 }

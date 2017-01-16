@@ -8,11 +8,18 @@ export const initialState = {
   fullDetails: {},
   savedData: {},
   categories: [],
-  selectedCategory: null
+  selectedCategory: null,
+  selectedDate: {}
 };
 
 const homeReducer = (state = getInitialState(initialState), action) => {
 	switch (action.type) {
+		case ACTIONS.SET_DEFAULTS:
+			return state.merge({
+				fullDetails: {},
+				selectedCategory: null,
+				categories: []
+			});
 		case ACTIONS.SET_DATA:
 			return state.merge({
 				data: action.results
@@ -20,7 +27,8 @@ const homeReducer = (state = getInitialState(initialState), action) => {
 		case ACTIONS.GET_FULL_DETAILS:
 			return state.merge({
 				fullDetails: action.items,
-				selectedCategory: null
+				selectedCategory: null,
+				selectedDate: {}
 			})
 		case ACTIONS.SAVE_DATA:
 			return state.merge({
@@ -39,7 +47,12 @@ const homeReducer = (state = getInitialState(initialState), action) => {
 			return state.merge({
 				selectedCategory: action.id
 			})
+		case ACTIONS.FILTER_BY_DATE:
+			return state.merge({
+				selectedDate: action.dates,
+				selectedCategory: null
 
+			})
 		default:
 		return state;
 	}

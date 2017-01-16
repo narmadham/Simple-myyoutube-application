@@ -7,22 +7,31 @@ import * as actionCreators from './actions';
 import GridItem from './../../components/gridItem';
 import Tags from './../../components/tags';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { getFilteredData } from './selectors';
+import { getFilteredData, getDates } from './selectors';
+import DateSlider from'./../../components/dateSlider';
 
 class HomePage extends Component {
 	constructor(props) {
 		super(props);
 		this._onSearchResultsFound = this._onSearchResultsFound.bind(this);
     this._onFilter = this._onFilter.bind(this);
+    this._onDateFilter = this._onDateFilter.bind(this);
 	}
+
+  componentDidMount() {
+    this.props.actions.setDefaults();
+  }
 
 	_onSearchResultsFound(results) {
     this.props.actions.getFullDetails(results);
-		// this.props.actions.setData(results);
 	}
 
   _onFilter(id) {
-    this.props.actions.filterByCategory(id, this.props.fullDetails);
+    this.props.actions.filterByCategory(id);
+  }
+
+  _onDateFilter(vals) {
+    this.props.actions.filterByDate(vals);
   }
 
   render() {
@@ -41,6 +50,14 @@ return (
           />
       </div>
     </section>
+    {this.props.dates  && this.props.dates.length > 0 &&
+    <section className="dateContainer">
+    <DateSlider 
+    dates={this.props.dates}
+    changeHandler={this._onDateFilter}
+       />
+    </section>
+    }
     <section className="tagBar">
     {this.props.categories.length > 0 && this.props.categories.map(result =>
     <Tags
@@ -52,10 +69,10 @@ return (
   )
   }
     </section>
-      <div className="bodyContainer">
+      <section className="bodyContainer">
         <Row> 
         <Col>
-         {this.props.fullDetails.length && this.props.fullDetails.map(result =>
+         {this.props.fullDetails.length > 0 && this.props.fullDetails.map(result =>
           <GridItem
             key={result.id}
             imgUrl={result.snippet.thumbnails.default.url}
@@ -70,25 +87,31 @@ return (
           />
         )}
          </Col>
+          {!this.props.fullDetails.length &&
+         <Col>
+
+         <h4>Sorry! No results found</h4>
+         </Col>
+       }
         </Row>
-      </div>
+        </section>
     </div>
 ); 
 }
 }
 HomePage.propTypes = {
   actions: React.PropTypes.object,
-  data: React.PropTypes.any,
   fullDetails: React.PropTypes.any,
   categories: React.PropTypes.array,
-  filteredData: React.PropTypes.any
+  filteredData: React.PropTypes.any,
+  dates: React.PropTypes.array
 };
 
 function mapStateToProps(state) {
   return {
-    data: state.getIn(['home', 'data']).toJS(),
     fullDetails: getFilteredData(state),
-    categories: state.getIn(['home', 'categories']).toJS()
+    categories: state.getIn(['home', 'categories']).toJS(),
+    dates: getDates(state)
   };
 }
 

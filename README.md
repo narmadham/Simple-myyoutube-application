@@ -11,8 +11,6 @@ ToDo:
 
 Cleanup of the code
 
-slider for year published
-
 Update style for categories filter
 
 Write unit test cases

@@ -3,14 +3,22 @@ import checkStatus from './../../utils/checkStatus';
 import parseJSON from './../../utils/parseJSON';
 
 export const ACTIONS = {
+	SET_DEFAULTS: 'SET_DEFAULTS_ACTION',
 	SET_DATA: 'SET_DATA_ACTION',
 	GET_FULL_DETAILS: 'GET_FULL_DETAILS_ACTION',
 	SAVE_DATA: 'SAVE_DATA_ACTION',
 	SET_CATEGORIES: 'SET_CATEGORIES_ACTION',
 	FILTER_BY_CATEGORY: 'FILTER_BY_CATEGORY_ACTION',
-	CHANGE_CATEGORY: 'CHANGE_CATEGORY_ACTION'
+	CHANGE_CATEGORY: 'CHANGE_CATEGORY_ACTION',
+	FILTER_BY_DATE: 'FILTER_BY_DATE_ACTION'
 
 };
+
+export function setDefaults() {
+	return {
+		type: ACTIONS.SET_DEFAULTS
+	};
+}
 
 export function setData(results) {
 	console.log(results)
@@ -59,16 +67,15 @@ function fetchFullDetails(idString, apiKey) {
 		.then(parseJSON)
 }
 
-export function getDetailsSuccess(results, idString, apiKey) {
+function getDetailsSuccess(results, idString, apiKey) {
 	console.log(results.items);
 	const items = results.items;
 	const categoryIds = items.map(item => {
 		return item.snippet.categoryId
 	});
-	console.log(categoryIds);
 	 return function(dispatch) {
 		dispatch(getCategories(results, categoryIds, apiKey))
-		.then (dispatch(setDetails(items)));
+		.then(dispatch(setDetails(items)));
 	 }
 }
 
@@ -79,7 +86,7 @@ export function setDetails(items) {
 	};
 }
 
-export function getFailure(error) {
+function getFailure(error) {
 	console.log(error);
 }
 
@@ -93,7 +100,7 @@ function getCategories(result, categoryIds, apiKey) {
 	}
 }
 
-export function getCategoriesSuccess(result) {
+function getCategoriesSuccess(result) {
 	let categories = [];
 	categories = result.items.map(item => {
 		return {
@@ -107,21 +114,19 @@ export function getCategoriesSuccess(result) {
 	};
 }
 
-export function filterByCategory(id, data) {
-	/* const filteredData = data.filter(function( element ) {
-		if(element.snippet.categoryId === id) {
-			return element !== undefined;
-		}
-	}); */
+export function filterByCategory(id) {
 
 	return {
 		type: ACTIONS.CHANGE_CATEGORY,
 		id
 	}
+}
 
-	/* return {
-		type: ACTIONS.FILTER_BY_CATEGORY,
-		filteredData
-	}; */
+export function filterByDate(dates) {
+	return {
+		type: ACTIONS.FILTER_BY_DATE,
+		dates
+
+	}
 }
 

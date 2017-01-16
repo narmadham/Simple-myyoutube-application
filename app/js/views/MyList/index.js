@@ -23,7 +23,7 @@ class MyList extends Component {
 		</section>
 			<div className="container">
 			<div className="row"> 
-				{this.props.myVideos.length && this.props.myVideos.map(result =>
+				{this.props.myVideos.length > 0 && this.props.myVideos.map(result =>
 				<GridItem
 					key={result.id}
 					imgUrl={result.snippet.thumbnails.default.url}
@@ -36,6 +36,11 @@ class MyList extends Component {
 					viewsCount={result.statistics.viewCount}
 				/>
 				)}
+				{!this.props.myVideos.length &&
+					<div>
+						<h4>No videos added to the your list</h4>
+					</div>
+				}
 			</div>
 		</div>
       </div>

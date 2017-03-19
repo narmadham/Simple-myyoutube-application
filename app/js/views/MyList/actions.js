@@ -16,7 +16,7 @@ export function loadMyVideos() {
 			}
 	}
 }
-
+//Duplicate of function in Home page. To be moved to common file
 function fetchFullDetails(idString, apiKey) {
 	return fetch('https://www.googleapis.com/youtube/v3/videos?id='+idString+'&key='+apiKey+'&part=snippet,statistics&fields=items(id,snippet,statistics)')
 		.then(checkStatus)

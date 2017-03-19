@@ -43,6 +43,18 @@ $dark-grey: rgb(68, 68, 68) !default;
 $blue: 	rgb(135,206,235) !default;
 
 
+// blue
+/// @type Color
+$blue-shade: rgb(44, 62, 80) !default;
+
+// red
+/// @type Color
+$orange-peel: rgb(230, 126, 34) !default;
+
+// red
+/// @type Color
+$orange-peel-light: rgba(230, 126, 34, 0.8) !default;
+
 
 
 
@@ -73,3 +85,6 @@ $breakpoints: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+
+
+// #2c3e50

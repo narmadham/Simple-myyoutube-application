@@ -9,8 +9,8 @@ export default class App extends Component {
     const { children } = this.props;
 
     return (
-      <div className='App'>
-        <div className="navbar-inverse bg-inverse">
+      <div className="App">
+        <div className="navbar">
           <div className="container d-flex justify-content-between">
             <Link to="/" className="navbar-brand">My Youtube</Link>
             <Nav className="navbar-nav" pullRight>
@@ -23,7 +23,7 @@ export default class App extends Component {
             </Nav>
           </div>
         </div>
-        { children }
+        {children}
       </div>
     );
   }

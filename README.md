@@ -1,16 +1,34 @@
+
 # Simple-myyoutube-application
-Simple application implementing youtube API
 
-Commands to be used:
+Simple youtube search application built with ReactJS and Redux
 
-To install the packages: npm install
+## Getting Started
 
-To run the application in development mode : npm run dev
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-ToDo:
+### Prerequisites
 
+NodeJS
+
+### Installing
+
+To install the packages: 
+```
+npm install
+```
+
+To run the application in development mode
+```
+npm run dev
+```
+
+### Todo
 Cleanup of the code
 
 Update style for categories filter
 
 Write unit test cases
+
+
+

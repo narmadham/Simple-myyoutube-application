@@ -1,37 +1,27 @@
 
 .react-typeahead-options {
-  margin: 0;
   padding: 0;
   list-style-type: none;
-  border: 1px solid #ccc;
+  border: 1px solid $blue-shade;
   cursor: default;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1;
   width: 100%;
-}
+  margin: 0 0 0 -8px;
 
-.react-typeahead-options {
-  margin-left: -8px;
-}
-
-.react-typeahead-options li[role="option"] {
-  padding: 5px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.react-typeahead-options li[role="option"][aria-selected="true"] {
-  background: #444444;
-  color: white;
-  font-weight: bold;
+  li[role="option"] {
+    padding: 5px;
+    text-align: left;
+    cursor: pointer;
+  }
 }
 
 .react-typeahead-container {
-  border: 1px solid #024e6a;
+  border: 1px solid $blue-shade;
   padding: 5px 8px;
   border-radius: 0px;
   background-color: white;
-  margin: 0 auto
+  margin: 110px auto 50px auto;
 }
 
 .react-typeahead-input {

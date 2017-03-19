@@ -4,10 +4,21 @@
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
+  color: $blue-shade;
 }
 
 .navbar {
   margin-bottom: 0;
+  background: $blue-shade;
+}
+
+.navbar-brand {
+  font-size: 2em;
+
+  &:hover, 
+  &:focus {
+    color: $orange-peel;
+  }
 }
 
 .jumbotron {
@@ -29,8 +40,7 @@ body {
   max-width: 40rem;
 }
 
-.dateContainer {
-	width:50%;
+.dateContainer {  
 	margin: 2em;
 }
 

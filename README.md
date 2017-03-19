@@ -30,5 +30,8 @@ Update style for categories filter
 
 Write unit test cases
 
+Content to be moved out of code
+
+API calls to be reused
 
 
